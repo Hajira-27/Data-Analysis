@@ -30,6 +30,7 @@ print(df)
 498 2022-05-14  Fitness   1673
 499 2022-05-15  Fitness   4231
 
+CLEANING THE DATA
 [500 rows x 3 columns]
 df['Date']=pd.to_datetime(df['Date'])
 df['Category']=df['Category'].astype('category')
@@ -129,10 +130,10 @@ Data columns (total 3 columns):
  0   Date      500 non-null    datetime64[ns]
  1   Category  500 non-null    object        
  2   Likes     500 non-null    int64         
-dtypes: datetime64[ns](1), int64(1), object(1)
-memory usage: 11.8+ KB
-sns.set(style='whitegrid')
 
+
+VISUALYZING THE DATA
+sns.set(style='whitegrid')
 plt.figure(figsize=(10,6))
 sns.boxplot(x='Category', y='Likes', data=df)
 plt.title('Distribution of likes by Category')
@@ -147,6 +148,8 @@ plt.title('Total Likes by Category')
 plt.xlabel('Category')
 plt.ylabel('Total Likes')
 plt.show()
+
+ANALYZING THE DATA
 
 df['Month']=df['Date'].dt.to_period('M')
 monthy_likes=df.groupby(['Month','Category'])['Likes'].sum().unstack()
